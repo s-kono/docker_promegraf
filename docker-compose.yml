@@ -1,0 +1,61 @@
+version: '2'
+services:
+  cadvisor:
+   #image: google/cadvisor:v0.32.0
+    image: google/cadvisor
+    restart: always
+   #pid: "host"
+   #privileged: true
+    volumes:
+      - /:/rootfs:ro
+      - /var/run:/var/run:rw
+      - /sys:/sys:ro
+      - /var/lib/docker:/var/lib/docker:ro
+    ports:
+      - '8080:8080'
+  p_nodeexp:
+   #image: prom/node-exporter:v0.18.1
+    image: prom/node-exporter
+    restart: always
+    command: --path.rootfs=/host
+    volumes:
+      - /:/host:ro
+    ports:
+      - '9100:9100'
+ #alertmanager:
+ #  image: prom/alertmanager:v0.20.0
+ #  image: prom/alertmanager
+ #  ports:
+ #    - "9093:9093"
+  prometheus:
+   #image: prom/prometheus:v2.15.2
+    image: prom/prometheus
+    restart: always
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml:ro
+    ports:
+      - '9090:9090'
+  grafana:
+   #image: grafana/grafana:6.5.3
+   #image: grafana/grafana:latest-ubuntu
+   #image: grafana/grafana:6.5.3-ubuntu
+    image: grafana/grafana
+    restart: always
+    volumes:
+      - ./grafana_data:/var/lib/grafana
+    environment:
+      - GF_SECURITY_ADMIN_USER=g-admin
+      - GF_SECURITY_ADMIN_PASSWORD=grafana
+      - GF_INSTALL_PLUGINS=grafana-polystat-panel,bessler-pictureit-panel
+      - GF_USERS_ALLOW_SIGN_UP=false
+      - GF_USERS_ALLOW_ORG_CREATE=false
+    ports:
+      - "3000:3000"
+  nginx:
+   #image: nginx:1.17.7
+    image: nginx
+    volumes:
+      - ./nginx_conf.d:/etc/nginx/conf.d
+    ports:
+      - "80:80"
+      - "443:443"
