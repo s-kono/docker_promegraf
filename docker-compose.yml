@@ -1,4 +1,4 @@
-version: '2'
+version: '3'
 services:
   cadvisor:
    #image: google/cadvisor:v0.32.0
@@ -46,9 +46,9 @@ services:
     environment:
       - GF_SECURITY_ADMIN_USER=g-admin
       - GF_SECURITY_ADMIN_PASSWORD=grafana
-      - GF_INSTALL_PLUGINS=grafana-polystat-panel,bessler-pictureit-panel
-      - GF_USERS_ALLOW_SIGN_UP=false
-      - GF_USERS_ALLOW_ORG_CREATE=false
+     #- GF_INSTALL_PLUGINS=grafana-polystat-panel,bessler-pictureit-panel
+     #- GF_USERS_ALLOW_SIGN_UP=false
+     #- GF_USERS_ALLOW_ORG_CREATE=false
     ports:
       - "3000:3000"
   nginx:
