@@ -8,6 +8,7 @@ if [[ ! -s nginx_conf.d/server.crt ]]; then
     openssl x509 -days 3650 -req -signkey nginx_conf.d/server.key < nginx_conf.d/server.csr > nginx_conf.d/server.crt
 fi
 
+install -d -m 777 ./prometheus_data
 install -d -m 777 ./grafana_data
 
 # apt install apache2-utils

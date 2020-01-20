@@ -1,3 +1,4 @@
 nginx_conf.d/htpasswd
 nginx_conf.d/server.*
 grafana_data/
+prometheus_data/

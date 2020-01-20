@@ -33,6 +33,7 @@ services:
     restart: always
     volumes:
       - ./prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - ./prometheus_data:/prometheus:rw
     ports:
       - '9090:9090'
   grafana:
