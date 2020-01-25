@@ -12,7 +12,8 @@ services:
       - /sys:/sys:ro
       - /var/lib/docker:/var/lib/docker:ro
     ports:
-      - '8080:8080'
+     #- '8080:8080'
+      - '8000:8000'
   p_nodeexp:
    #image: prom/node-exporter:v0.18.1
     image: prom/node-exporter
