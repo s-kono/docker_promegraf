@@ -4,7 +4,7 @@ set -eux
 
 if [[ ! -s nginx_conf.d/server.crt ]]; then
     openssl genrsa 2048 > nginx_conf.d/server.key
-    openssl req -new -key nginx_conf.d/server.key > nginx_conf.d/server.csr
+    yes '' | openssl req -new -key nginx_conf.d/server.key > nginx_conf.d/server.csr
     openssl x509 -days 3650 -req -signkey nginx_conf.d/server.key < nginx_conf.d/server.csr > nginx_conf.d/server.crt
 fi
 
