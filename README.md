@@ -1,7 +1,10 @@
 
- * need: docker, docker-compose, apache2-utils(Ubuntu) or httpd-tools(CentOS)
+ * need
+   * docker
+   * docker-compose
+   * apache2-utils(Ubuntu) or httpd-tools(CentOS)
 
- * ./initstart.sh
+ * run: ./initstart.sh
 
  * access: https://\<host>/
    * basic auth: ${GF_SECURITY_ADMIN_USER}/${GF_SECURITY_ADMIN_PASSWORD}
