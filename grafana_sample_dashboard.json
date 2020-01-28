@@ -23,17 +23,17 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "Prometheus",
+      "datasource": null,
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
-        "h": 9,
+        "h": 8,
         "w": 12,
         "x": 0,
         "y": 0
       },
       "hiddenSeries": false,
-      "id": 2,
+      "id": 22,
       "legend": {
         "avg": false,
         "current": false,
@@ -59,7 +59,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "node_load1",
+          "expr": "sum(\rrate(container_cpu_usage_seconds_total[5m]))\r by (container_label_com_docker_compose_service)",
           "refId": "A"
         }
       ],
@@ -67,7 +67,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "node_load1",
+      "title": "rate(container_cpu_usage_seconds_total[5m])",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -145,7 +145,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "container_network_receive_bytes_total",
+          "expr": "sum(\rrate(container_network_receive_bytes_total[1m]))\r by (container_label_com_docker_compose_service)",
           "refId": "A"
         }
       ],
@@ -153,7 +153,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "container_network_receive_bytes_total",
+      "title": "rate(container_network_receive_bytes_total[1m])",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -183,6 +183,92 @@
           "max": null,
           "min": null,
           "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "Prometheus",
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 0,
+        "y": 8
+      },
+      "hiddenSeries": false,
+      "id": 2,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "node_load5",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "node_load5",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
         }
       ],
       "yaxis": {
@@ -231,7 +317,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "container_network_transmit_bytes_total",
+          "expr": "sum(\rrate(container_network_transmit_bytes_total[1m]))\r by (container_label_com_docker_compose_service)",
           "refId": "A"
         }
       ],
@@ -239,7 +325,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "container_network_transmit_bytes_total",
+      "title": "rate(container_network_transmit_bytes_total[1m])",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -287,8 +373,94 @@
       "gridPos": {
         "h": 8,
         "w": 12,
+        "x": 12,
+        "y": 16
+      },
+      "hiddenSeries": false,
+      "id": 20,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "sum(rate(container_cpu_user_seconds_total[1m])) by (container_label_com_docker_compose_service)",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "rate(container_cpu_user_seconds_total[1m])",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": null,
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 8,
+        "w": 12,
         "x": 0,
-        "y": 9
+        "y": 17
       },
       "hiddenSeries": false,
       "id": 8,
@@ -374,7 +546,93 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 16
+        "y": 24
+      },
+      "hiddenSeries": false,
+      "id": 18,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "sum(rate(container_cpu_usage_seconds_total[1m])) by (container_label_com_docker_compose_service)",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "rate(container_cpu_usage_seconds_total[1m])",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": null,
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 25
       },
       "hiddenSeries": false,
       "id": 6,
@@ -459,11 +717,11 @@
       "gridPos": {
         "h": 8,
         "w": 12,
-        "x": 0,
-        "y": 17
+        "x": 12,
+        "y": 32
       },
       "hiddenSeries": false,
-      "id": 12,
+      "id": 10,
       "legend": {
         "avg": false,
         "current": false,
@@ -489,7 +747,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "container_cpu_user_seconds_total",
+          "expr": "sum(rate(container_cpu_system_seconds_total[1m])) by (container_label_com_docker_compose_service)",
           "refId": "A"
         }
       ],
@@ -497,8 +755,8 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "container_cpu_user_seconds_total",
-      "tooltip": {
+      "title": "rate(container_cpu_system_seconds_total[1m])",
+      "
         "shared": true,
         "sort": 0,
         "value_type": "individual"
@@ -545,8 +803,8 @@
       "gridPos": {
         "h": 8,
         "w": 12,
-        "x": 12,
-        "y": 24
+        "x": 0,
+        "y": 33
       },
       "hiddenSeries": false,
       "id": 4,
@@ -575,7 +833,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "container_memory_rss",
+          "expr": "sum(container_memory_rss) by (container_label_com_docker_compose_service)",
           "refId": "A"
         }
       ],
@@ -599,93 +857,7 @@
       },
       "yaxes": [
         {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": null,
-      "fill": 1,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 8,
-        "w": 12,
-        "x": 0,
-        "y": 25
-      },
-      "hiddenSeries": false,
-      "id": 10,
-      "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": true,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "nullPointMode": "null",
-      "options": {
-        "dataLinks": []
-      },
-      "percentage": false,
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "expr": "container_cpu_system_seconds_total",
-          "refId": "A"
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "container_cpu_system_seconds_total",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "format": "short",
+          "format": "bytes",
           "label": null,
           "logBase": 1,
           "max": null,
@@ -715,7 +887,7 @@
     "list": []
   },
   "time": {
-    "from": "now-12h",
+    "from": "now-6h",
     "to": "now"
   },
   "timepicker": {
@@ -735,5 +907,5 @@
   "timezone": "browser",
   "title": "sample",
   "uid": "nYFbuksWk",
-  "version": 18
+  "version": 30
 }
